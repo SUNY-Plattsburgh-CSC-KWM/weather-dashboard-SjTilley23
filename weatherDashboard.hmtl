@@ -16,7 +16,13 @@
 
 </style>
 <body>
-
+    <form onsubmit="HandleSubmit()">
+        <label for="Latitude">Latitude</label><br>
+        <input type="text" id="Latitude"><br>
+        <label for="Logitude">Longitude</label><br>
+        <input type="text" id="Longitude"><br>
+        <input type="submit" value="submit">
+    </form>
 
 
 

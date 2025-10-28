@@ -5,13 +5,23 @@ class APICalls {
     // Creating the Base URL that includes correct units and correct type calls
     constructor() {
         this.baseURL = "https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,precipitation&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch"
+        this.latitude = "44.7"
+        this.longitude = "-73.45"
     }
 
     //Default Latitude and Longitude to input on top of the Base URL
     DefaultSettings() {
         let URL = this.baseURL
-        URL += "&latitude=44.7&longitude=-73.45"
+        URL += "&latitude=" + this.latitude + "&longitude=" + this.longitude
         return URL
+    }
+
+    ChangeLatitude(inputLatitude) {
+        this.latitude = inputLatitude
+    }
+
+    ChangeLongitude(inputLongitude) {
+        this.longitude = inputLongitude
     }
 
 
@@ -29,6 +39,9 @@ class APICalls {
     }
 } // End of Class
 
+function HandleSubmit() {
+    console.log($('form')[0])
+}
 
 async function Main() {
 
