@@ -1,4 +1,3 @@
-
 class APICalls {
 
 
@@ -10,7 +9,7 @@ class APICalls {
     }
 
     //Default Latitude and Longitude to input on top of the Base URL
-    DefaultSettings() {
+    ChangeSettings() {
         let URL = this.baseURL
         URL += "&latitude=" + this.latitude + "&longitude=" + this.longitude
         return URL
@@ -39,22 +38,29 @@ class APICalls {
     }
 } // End of Class
 
-function HandleSubmit() {
-    console.log($('form')[0])
-}
+
 
 async function Main() {
 
     try {
         // Fetches data using the default settings
-        const api = new APICalls()
-        const data = await api.GetData(api.DefaultSettings())
+        const data = await api.GetData(api.ChangeSettings())
         console.log(data)
+        $('form')[0].addEventListener("submit", async function () {
+            api.ChangeLatitude($('#Latitude').val())
+            api.ChangeLongitude($('#Longitude').val())
+            const data = await api.GetData(api.ChangeSettings())
+            console.log(data)
+        });
+
     }
     catch(e) {
         console.log("Error: " + e)
     }
-} // End of Funciton
+} // End of Function
 
+
+const api = new APICalls()
 Main()
+
 
